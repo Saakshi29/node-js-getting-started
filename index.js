@@ -7,6 +7,11 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   
-   .post('/', (req, res) => res.send("hello"))
+   .post('/', (req, res) => response = "This is a sample response from your webhook!";res.setHeader('Content-Type', 'application/json');res.send(JSON.stringify({ "speech": response, "displayText": response 
+  //"speech" is the spoken version of the response, "displayText" is the visual version
+  }));
+)
 
+ //Requires application/json MIME type
+  
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
