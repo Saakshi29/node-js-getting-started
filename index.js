@@ -2,15 +2,21 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  
-   .post('/', (req, res) => response = "This is a sample response from your webhook!";res.setHeader('Content-Type', 'application/json');res.send(JSON.stringify({ "speech": response, "displayText": response 
-  }))
-)
+var app=express()
+ app.use(express.static(path.join(__dirname, 'public')));
 
- //Requires application/json MIME type
+app.post('/', function(req, res){
+    
+	
+	
+	response = "This is a sample response from your webhook!"; //Default response from the webhook to show it's working
+
+	res.setHeader('Content-Type', 'application/json'); //Requires application/json MIME type
+  res.send(JSON.stringify({ "speech": response, "displayText": response 
+  //"speech" is the spoken version of the response, "displayText" is the visual version
+  }));
+   
+});
+
   
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+ app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
