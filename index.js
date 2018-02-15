@@ -9,7 +9,7 @@ app.post('/', function(req, res){
     
 	
 	
-	response = res.body; //Default response from the webhook to show it's working
+	response = req.body.metadata.intentName; //Default response from the webhook to show it's working
 
 	res.setHeader('Content-Type', 'application/json'); //Requires application/json MIME type
   res.send(JSON.stringify({ "speech": response, "displayText": response 
