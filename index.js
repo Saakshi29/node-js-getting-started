@@ -20,7 +20,7 @@ app.use(
   })
 );
 
-restService.use(bodyParser.json());
+app.use(bodyParser.json());
 
 
 app.post("/", function(req, res) {
